@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+    {% for category in categories %}
+        {% if category == search_term %}
+            <a href="/category/{{ category.pk }}"><h3>{{ category.name }}</h3></a>
+        {% endif %}
+            {% for recommendation in recommendations %}
+                {% if recommendation == search_term %}
+                    <a href="/recommendation/{{ recommendation.pk }}"><h4>{{ recommendation.name }}</h4></a>
+                {% else %}
+                    <h4 color="red">Not found</h4>
+                {%  endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+
+<form action="/business_signup/" method="POST">
+
+{% csrf_token %}
+
+{{form.as_p}}
+<h4>phone error:{{ phone_error }}</h4>
+
+<input type="checkbox" value="" required>by checking the box, you agree to the <a href="/terms_of_use_and_privacy_policy/">Terms of use and Privacy policy</a>
+<br>
+<br>
+<input type="submit" value="Create Business User">
+
+</form>
+
+

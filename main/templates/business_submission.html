@@ -1,0 +1,63 @@
+{% if user.users.business_user %}
+
+
+<form action="/business_submission/" method='POST' enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<p>User: {{user.username}}</p>
+
+{{form.business_user}}
+
+
+
+{{form.mobile.label}}
+{{form.mobile}}
+</br>
+</br>
+</br>
+{{form.email.label}}
+{{form.email}}
+</br>
+</br>
+{{form.address.label}}
+{{form.address}}
+</br>
+</br>
+</br>
+{{form.info.label}}
+{{form.info}}
+</br>
+</br>
+</br>
+{{form.image1.label}}
+{{form.image1}}
+</br>
+</br>
+<div id="images"></div>
+<input type="submit" value="Submit"/>
+</form>
+
+{{ form.errors}}
+{% endif %}
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js">
+</script>
+
+<script type="text/javascript">
+    $("form").on('change', function(e){
+        console.log(e.target.id);
+        //if($("#" + e.target.id ).val() == "")
+        if($("#id_image1").val() == "")
+        {
+            console.log('image is null');
+        }
+        else
+        {
+            var len_plus = $('.image_input').length+1;
+            $('#images').append('Image'+len_plus+'<input class="image_input" id="id_image'+len_plus+'" name="image'+len_plus+'" type="file"> <br><br>');
+        }
+    });
+</script>
